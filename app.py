@@ -59,7 +59,7 @@ def handle_message(event):
     sender = event.source.user_id #get usesenderr_id
     gid = event.source.sender_id #get group_id
     profile = line_bot_api.get_profile(sender)
-   if text=="Adit":
+    if text=="Adit":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Kamu jahat adit'))
     if text=="Mail":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Kamu jahat mail'))
