@@ -69,6 +69,13 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='WATASHI WA NAMBA WAN !!!'))    
     if text=="Rate":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Super Rare, and The best Light Cruiser in the World !!!'))
+    if text=="Best Pose":
+        line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://azurlane.koumakan.jp/w/images/d/d8/San_Diego.png',
+    preview_image_url='https://azurlane.koumakan.jp/w/images/d/d8/San_Diego.png'))
+    if text=="Miku":
+        line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='http://i1.ytimg.com/vi/MEAz8sNak68/maxresdefault.jpg',
+    preview_image_url='http://i1.ytimg.com/vi/MEAz8sNak68/maxresdefault.jpg'))    
+
     
     line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Halo '+profile.display_name+'\nKata Kunci Tidak Diketahui :) \nKetik "menu" untuk mengetahui menu yang tersedia'))
 
