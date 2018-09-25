@@ -59,12 +59,12 @@ def handle_message(event):
     sender = event.source.user_id #get usesenderr_id
     gid = event.source.sender_id #get group_id
     profile = line_bot_api.get_profile(sender)
-    if text=="Adit":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Kamu jahat adit'))
-    if text=="Mail":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Kamu jahat mail'))
-    if text=="Djohan":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Kamu jahat djohan'))
+    if text=="Description":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Atlanta-class Light Cruiser-San Diego, Hull number CL-53 '))
+    if text=="I love you":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='I love you too, because We are Number One.'))
+    if text=="Anthem":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='https://www.youtube.com/watch?v=ddiTflMQ9Aw'))
     if text=="San Diego":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='WATASHI WA NAMBA WAN !!!'))    
 
