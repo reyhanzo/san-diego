@@ -64,7 +64,8 @@ def handle_message(event):
     if text=="I love you":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='I love you too, because We are Number One.'))
     if text=="Anthem":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='https://www.youtube.com/watch?v=ddiTflMQ9Aw'))
+        line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://www.youtube.com/watch?v=ddiTflMQ9Aw',
+    preview_image_url='https://www.youtube.com/watch?v=ddiTflMQ9Aw'))
     if text=="San Diego":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='WATASHI WA NAMBA WAN !!!'))    
     if text=="Rate":
