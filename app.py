@@ -65,7 +65,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='I love you too, because We are Number One.'))
     if text=="Anthem":
         line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://www.youtube.com/watch?v=ddiTflMQ9Aw',
-    preview_image_url='https://i.ytimg.com/vi/y8oAUeOuAvs/maxresdefault.jpg'))
+    preview_image_url='https://i.ytimg.com/vi/ddiTflMQ9Aw/maxresdefault.jpg'))
     if text=="San Diego":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='WATASHI WA NAMBA WAN !!!'))    
     if text=="Rate":
@@ -78,15 +78,15 @@ def handle_message(event):
     preview_image_url='https://eimusics.com/wp-content/uploads/2015/02/2013.03.20-livetune-feat.-Hatsune-Miku-Redial-1280x720-H264-AAC-eimusics.com_.mkv_snapshot_00.02_2015.02.19_11.33.51.jpg'))    
     if text=="Nyanpantsu":
         line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://youtu.be/YptHuPjZiTo',
-    preview_image_url='https://i.ytimg.com/vi/y8oAUeOuAvs/maxresdefault.jpg'))
+    preview_image_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqUK3plTRURgivxdyR79dERQpZ4HIHNxwtz9K2FqSJf-ojMLLZ'))
     if text=="Bowsette":
         line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://www.instagram.com/p/BoHifr-H5tK/',
-    preview_image_url='https://i.ytimg.com/vi/y8oAUeOuAvs/maxresdefault.jpg'))
+    preview_image_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqUK3plTRURgivxdyR79dERQpZ4HIHNxwtz9K2FqSJf-ojMLLZ'))
     if text=="Menu":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Description, I love you, San Diego, Rate, Best Pose, Miku'))
     if text=="Wake up":
         line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://www.instagram.com/p/Bn_Wd-fHWvg/',
-    preview_image_url='https://i.ytimg.com/vi/y8oAUeOuAvs/maxresdefault.jpg'))
+    preview_image_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqUK3plTRURgivxdyR79dERQpZ4HIHNxwtz9K2FqSJf-ojMLLZ'))
    
     line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Halo '+profile.display_name+'\nKata Kunci Tidak Diketahui :) \nKetik "Menu" untuk mengetahui apa saja disini'))
 
