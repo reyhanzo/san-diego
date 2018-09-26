@@ -80,12 +80,15 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://youtu.be/YptHuPjZiTo',
     preview_image_url='https://i.ytimg.com/vi/y8oAUeOuAvs/maxresdefault.jpg'))
     if text=="Bowsette":
-        line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://www.instagram.com/p/BoHifr-H5tK/?utm_source=ig_web_button_share_sheet',
+        line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://www.instagram.com/p/BoHifr-H5tK/',
     preview_image_url='https://i.ytimg.com/vi/y8oAUeOuAvs/maxresdefault.jpg'))
-    if text=="menu":
+    if text=="Menu":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Description, I love you, San Diego, Rate, Best Pose, Miku'))
-    
-    line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Halo '+profile.display_name+'\nKata Kunci Tidak Diketahui :) \nKetik "menu" untuk mengetahui menu yang tersedia'))
+    if text=="Wake up":
+        line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://www.instagram.com/p/Bn_Wd-fHWvg/',
+    preview_image_url='https://i.ytimg.com/vi/y8oAUeOuAvs/maxresdefault.jpg'))
+   
+    line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Halo '+profile.display_name+'\nKata Kunci Tidak Diketahui :) \nKetik "Menu" untuk mengetahui apa saja disini'))
 
 
 import os
