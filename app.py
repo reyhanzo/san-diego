@@ -76,16 +76,17 @@ def handle_message(event):
     if text=="Miku":
         line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://eimusics.com/wp-content/uploads/2015/02/2013.03.20-livetune-feat.-Hatsune-Miku-Redial-1280x720-H264-AAC-eimusics.com_.mkv_snapshot_00.02_2015.02.19_11.33.51.jpg',
     preview_image_url='https://eimusics.com/wp-content/uploads/2015/02/2013.03.20-livetune-feat.-Hatsune-Miku-Redial-1280x720-H264-AAC-eimusics.com_.mkv_snapshot_00.02_2015.02.19_11.33.51.jpg'))    
-    if text=="Music1":
-        line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://www.youtube.com/watch?v=PB5Er92gH0M',
+    if text=="Nyanpantsu":
+        line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://youtu.be/YptHuPjZiTo',
     preview_image_url='https://i.ytimg.com/vi/y8oAUeOuAvs/maxresdefault.jpg'))
-    if text=="Music2":
-        line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://www.youtube.com/watch?v=-SHyOrY6QUw&list=RDMM-SHyOrY6QUw&start_radio=1',
-    preview_image_url='https://i.ytimg.com/vi/y8oAUeOuAvs/maxresdefault.jpg'))    
-
-
+    if text=="Bowsette":
+        line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://www.instagram.com/p/BoHifr-H5tK/?utm_source=ig_web_button_share_sheet',
+    preview_image_url='https://i.ytimg.com/vi/y8oAUeOuAvs/maxresdefault.jpg'))
+    if text=="menu":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Description, I love you, San Diego, Rate, Best Pose, Miku'))
     
     line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Halo '+profile.display_name+'\nKata Kunci Tidak Diketahui :) \nKetik "menu" untuk mengetahui menu yang tersedia'))
+
 
 import os
 if __name__ == "__main__":
