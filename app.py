@@ -71,14 +71,12 @@ def handle_message(event):
     if text=="Rate":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Super Rare, and The best Light Cruiser in the World !!!'))
     if text=="Best Pose":
-        line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://azurlane.koumakan.jp/w/images/d/d8/San_Diego.png',
-    preview_image_url='https://azurlane.koumakan.jp/w/images/d/d8/San_Diego.png'))
+        line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://azurlane.koumakan.jp/w/images/d/d8/San_Diego.png',preview_image_url='https://azurlane.koumakan.jp/w/images/d/d8/San_Diego.png'))
     if text=="Miku":
         line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://eimusics.com/wp-content/uploads/2015/02/2013.03.20-livetune-feat.-Hatsune-Miku-Redial-1280x720-H264-AAC-eimusics.com_.mkv_snapshot_00.02_2015.02.19_11.33.51.jpg',
     preview_image_url='https://eimusics.com/wp-content/uploads/2015/02/2013.03.20-livetune-feat.-Hatsune-Miku-Redial-1280x720-H264-AAC-eimusics.com_.mkv_snapshot_00.02_2015.02.19_11.33.51.jpg'))    
     if text=="Nyanpantsu":
-        line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://youtu.be/YptHuPjZiTo',
-    preview_image_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqUK3plTRURgivxdyR79dERQpZ4HIHNxwtz9K2FqSJf-ojMLLZ'))
+        line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://youtube.com/embed/YptHuPjZiTo',preview_image_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqUK3plTRURgivxdyR79dERQpZ4HIHNxwtz9K2FqSJf-ojMLLZ'))
     if text=="Bowsette":
         line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://www.instagram.com/p/BoHifr-H5tK/',
     preview_image_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqUK3plTRURgivxdyR79dERQpZ4HIHNxwtz9K2FqSJf-ojMLLZ'))
