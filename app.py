@@ -85,7 +85,7 @@ def handle_message(event):
     if text=="Wake up":
         line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://www.instagram.com/p/Bn_Wd-fHWvg/',
     preview_image_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqUK3plTRURgivxdyR79dERQpZ4HIHNxwtz9K2FqSJf-ojMLLZ'))
-     if text=="Belfast":
+    if text=="Belfast":
         line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://archive.hnsa.org/ships/img/belfast1.jpg',preview_image_url='https://archive.hnsa.org/ships/img/belfast1.jpg'))
 
 
