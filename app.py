@@ -53,19 +53,31 @@ def callback():
         abort(400)
     return 'OK'
 
+def inputmhs(nrp, nama, alamat):
+    r = requests.post("http://www.aditmasih.tk/api_kelompok1/insert.php", data={'nrp': nrp, 'nama': nama, 'alamat': alamat})
+    data = r.json()
+
+    flag = data['flag']
+   
+    if(flag == "1"):
+        return 'Data '+nama+' berhasil dimasukkan\n'
+    elif(flag == "0"):
+        return 'Data gagal dimasukkan\n'
+
+
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     text = event.message.text #simplify for receove message
     sender = event.source.user_id #get usesenderr_id
     gid = event.source.sender_id #get group_id
     profile = line_bot_api.get_profile(sender)
+    data=text.split('-')
+    if(data[0]=='tambah'):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=inputmhs(data[1],data[2],data[3])))
     if text=="Description":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Atlanta-class Light Cruiser-San Diego, Hull number CL-53 '))
     if text=="I love you":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='I love you too, because We are Number One.'))
-    if text=="Anthem":
-        line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://www.youtube.com/watch?v=ddiTflMQ9Aw',
-    preview_image_url='https://i.ytimg.com/vi/ddiTflMQ9Aw/maxresdefault.jpg'))
     if text=="San Diego":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='WATASHI WA NAMBA WAN !!!'))    
     if text=="Rate":
@@ -75,16 +87,8 @@ def handle_message(event):
     if text=="Miku":
         line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://eimusics.com/wp-content/uploads/2015/02/2013.03.20-livetune-feat.-Hatsune-Miku-Redial-1280x720-H264-AAC-eimusics.com_.mkv_snapshot_00.02_2015.02.19_11.33.51.jpg',
     preview_image_url='https://eimusics.com/wp-content/uploads/2015/02/2013.03.20-livetune-feat.-Hatsune-Miku-Redial-1280x720-H264-AAC-eimusics.com_.mkv_snapshot_00.02_2015.02.19_11.33.51.jpg'))    
-    if text=="Nyanpantsu":
-        line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://youtube.com/embed/YptHuPjZiTo',preview_image_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqUK3plTRURgivxdyR79dERQpZ4HIHNxwtz9K2FqSJf-ojMLLZ'))
-    if text=="Bowsette":
-        line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://www.instagram.com/p/BoHifr-H5tK/',
-    preview_image_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqUK3plTRURgivxdyR79dERQpZ4HIHNxwtz9K2FqSJf-ojMLLZ'))
     if text=="Menu":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Description, I love you, San Diego, Rate, Best Pose, Miku'))
-    if text=="Wake up":
-        line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://www.instagram.com/p/Bn_Wd-fHWvg/',
-    preview_image_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqUK3plTRURgivxdyR79dERQpZ4HIHNxwtz9K2FqSJf-ojMLLZ'))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Description, I love you, San Diego, Rate, Best Pose, Miku, Belfast'))    
     if text=="Belfast":
         line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://archive.hnsa.org/ships/img/belfast1.jpg',preview_image_url='https://archive.hnsa.org/ships/img/belfast1.jpg'))
 
