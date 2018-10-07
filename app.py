@@ -89,7 +89,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://archive.hnsa.org/ships/img/belfast1.jpg',preview_image_url='https://archive.hnsa.org/ships/img/belfast1.jpg'))
 
 
-    line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Halo '+profile.display_name+'\nKata Kunci Tidak Diketahui :) \nKetik "Menu" untuk mengetahui apa saja disini'))
+    line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Ngapain Kamu '+profile.display_name+'\nNulis apa kamu \nKetik "Menu" woi....'))
 
 
 import os
