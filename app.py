@@ -53,16 +53,16 @@ def callback():
         abort(400)
     return 'OK'
 
-def inputmhs(nrp, nama, alamat):
-    r = requests.post("http://www.aditmasih.tk/api_kelompok1/insert.php", data={'nrp': nrp, 'nama': nama, 'alamat': alamat})
+def inputgame(id, Judul, Tahun, Genre, OS):
+    r = requests.post("http://www.aditmasih.tk/api_reyreyrey/insert.php", data={'id': id, 'Judul': Judul, 'Tahun': Tahun, 'Genre': Genre, 'OS': OS})
     data = r.json()
 
     flag = data['flag']
    
     if(flag == "1"):
-        return 'Data '+nama+' berhasil dimasukkan\n'
+        return 'Data '+nama+' berhasil dimasukkan dan tersimpan\n'
     elif(flag == "0"):
-        return 'Data gagal dimasukkan\n'
+        return 'Data gagal dimasukkan, coba tanya yg buat kenapa...\n'
 
 
 @handler.add(MessageEvent, message=TextMessage)
@@ -72,8 +72,8 @@ def handle_message(event):
     gid = event.source.sender_id #get group_id
     profile = line_bot_api.get_profile(sender)
     data=text.split('-')
-    if(data[0]=='tambah'):
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=inputmhs(data[1],data[2],data[3])))
+    if(data[0]=='Tambah'):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=inputgame(data[1],data[2],data[3],data[4],data[5])))
     if text=="Description":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Atlanta-class Light Cruiser-San Diego, Hull number CL-53 '))
     if text=="I love you":
