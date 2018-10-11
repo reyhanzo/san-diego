@@ -54,7 +54,7 @@ def callback():
     return 'OK'
 
 def inputgame(Id, Judul, Tahun, Genre, OS):
-    r = requests.post("http://www.aditmasih.tk/api_reyreyrey/insert.php", data={'id': Id, 'Judul': Judul, 'Tahun': Tahun, 'Genre': Genre, 'OS': OS})
+    r = requests.post("http://www.aditmasih.tk/api_reyreyrey/insert.php", data={'Id': Id, 'Judul': Judul, 'Tahun': Tahun, 'Genre': Genre, 'OS': OS})
     data = r.json()
     # return data
     flag = data['flag']
