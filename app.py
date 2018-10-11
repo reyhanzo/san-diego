@@ -53,8 +53,8 @@ def callback():
         abort(400)
     return 'OK'
 
-def inputgame(id, Judul, Tahun, Genre, OS):
-    r = requests.post("http://www.aditmasih.tk/api_reyreyrey/insert.php", data={'id': id, 'Judul': Judul, 'Tahun': Tahun, 'Genre': Genre, 'OS': OS})
+def inputgame(number, Judul, Tahun, Genre, OS):
+    r = requests.post("http://www.aditmasih.tk/api_reyreyrey/insert.php", data={'id': number, 'Judul': Judul, 'Tahun': Tahun, 'Genre': Genre, 'OS': OS})
     data = r.json()
 
     flag = data['flag']
