@@ -53,8 +53,8 @@ def callback():
         abort(400)
     return 'OK'
 
-def inputgame(Id, Judul, Tahun, Genre, OS):
-    r = requests.post("http://www.aditmasih.tk/api_reyreyrey/insert.php", data={'Id': Id, 'Judul': Judul, 'Tahun': Tahun, 'Genre': Genre, 'OS': OS})
+def inputgame(Judul, Tahun, Genre, OS):
+    r = requests.post("http://www.aditmasih.tk/api_reyreyrey/insert.php", data={'Judul': Judul, 'Tahun': Tahun, 'Genre': Genre, 'OS': OS})
     data = r.json()
     # return data
     flag = data['flag']
@@ -74,7 +74,7 @@ def handle_message(event):
     profile = line_bot_api.get_profile(sender)
     data=text.split('-')
     if(data[0]=='Tambah'):
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=inputgame(data[1],data[2],data[3],data[4],data[5])))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=inputgame(data[1],data[2],data[3],data[4])))
     if text=="Description":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Atlanta-class Light Cruiser-San Diego, Hull number CL-53 '))
     if text=="I love you":
