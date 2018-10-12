@@ -54,7 +54,7 @@ def callback():
     return 'OK'
 
 def inputgame(Judul, Tahun, Genre, OS):
-    r = requests.post("http://www.aditmasih.tk/api_reyreyrey/insert.php", data={'Judul': Judul, 'Tahun': Tahun, 'Genre': Genre, 'OS': OS})
+    r = requests.post("http://www.aditmasih.tk/api_reyreyrey/insert.php", data={'judul': Judul, 'tahun': Tahun, 'genre': Genre, 'os': OS})
     data = r.json()
     # return data
     flag = data['flag']
@@ -64,6 +64,28 @@ def inputgame(Judul, Tahun, Genre, OS):
         return 'Data '+nama+' berhasil dimasukkan dan tersimpan\n'
     elif(flag == "0"):
         return 'Data gagal dimasukkan, coba tanya yg buat kenapa...\n'
+
+def carigame(Judul):
+    URLgame = "http://www.aditmasih.tk/api_reyreyrey/show.php?judul=" + Judul
+    r = requests.get(URLgame)
+    data = r.json()
+    err = "data tidak ditemukan :("
+    
+    flag = data['flag']
+    if(flag == "1"):
+        Judul = data['data_game'][0]['judul']
+        Tahun = data['data_game'][0]['tahun']
+        Genre = data['data_game'][0]['genre']
+        OS = data['data_game'][0]['os']
+
+        # munculin semua, ga rapi, ada 'u' nya
+        # all_data = data['data_angkatan'][0]
+        data= "Judul : "+Judul+"\nTahun : "+Tahun+"\nGenre : "+Genre+"\nOS : "+OS
+        return data
+        # return all_data
+
+    elif(flag == "0"):
+        return err
 
 
 @handler.add(MessageEvent, message=TextMessage)
@@ -75,6 +97,8 @@ def handle_message(event):
     data=text.split('-')
     if(data[0]=='Tambah'):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=inputgame(data[1],data[2],data[3],data[4])))
+    if(data[0]=='Lihat'):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=carigame(data[1])))
     if text=="Description":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Atlanta-class Light Cruiser-San Diego, Hull number CL-53 '))
     if text=="I love you":
