@@ -87,6 +87,33 @@ def carigame(Id):
     elif(flag == "0"):
         return err
 
+def allgames():
+    r = requests.post("http://www.aditmasih.tk/api_reyreyrey/all.php")
+    data = r.json()
+
+    flag = data['flag']
+   
+    if(flag == "1"):
+        hasil = ""
+        for i in range(0,len(data['data_game'])):
+            Judul = data['data_game'][int(i)][0]
+            Tahun = data['data_game'][int(i)][2]
+            Genre = data['data_game'][int(i)][4]
+            OS = data['data_game'][int(i)][6]
+            hasil=hasil+str(i+1)
+            hasil=hasil+".\nJudul : "
+            hasil=hasil+Judul
+            hasil=hasil+"\nTahun : "
+            hasil=hasil+Tahun
+            hasil=hasil+"\nGenre : "
+            hasil=hasil+Genre
+            hasil=hasil+"\nOS : "
+            hasil=hasil+OS
+            hasil=hasil+"\n"
+        return hasil
+    elif(flag == "0"):
+        return 'Data gagal dimasukkan :(\n'
+
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -97,8 +124,12 @@ def handle_message(event):
     data=text.split('-')
     if(data[0]=='Tambah'):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=inputgame(data[1],data[2],data[3],data[4])))
-    if(data[0]=='Lihat'):
+    elif(data[0]=='Lihat'):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=carigame(data[1])))
+    elif(data[0]=='Semua'):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=allgames()))
+
+
     if text=="Description":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Atlanta-class Light Cruiser-San Diego, Hull number CL-53 '))
     if text=="I love you":
