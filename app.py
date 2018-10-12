@@ -96,11 +96,14 @@ def allgames():
     if(flag == "1"):
         hasil = ""
         for i in range(0,len(data['data_game'])):
-            Judul = data['data_game'][int(i)][0]
-            Tahun = data['data_game'][int(i)][2]
-            Genre = data['data_game'][int(i)][4]
-            OS = data['data_game'][int(i)][6]
+            Id = data['data_game'][int(i)][0]
+            Judul = data['data_game'][int(i)][2]
+            Tahun = data['data_game'][int(i)][4]
+            Genre = data['data_game'][int(i)][6]
+            OS = data['data_game'][int(i)][8]
             hasil=hasil+str(i+1)
+            hasil=hasil+".\nId : "
+            hasil=hasil+Id
             hasil=hasil+".\nJudul : "
             hasil=hasil+Judul
             hasil=hasil+"\nTahun : "
@@ -126,7 +129,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=inputgame(data[1],data[2],data[3],data[4])))
     elif(data[0]=='Lihat'):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=carigame(data[1])))
-    elif(data[0]=='Semua'):
+    elif(data[0]=='My Games'):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=allgames()))
 
 
