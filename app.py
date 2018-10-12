@@ -124,7 +124,7 @@ def hapusgame(Id):
     flag = data['flag']
    
     if(flag == "1"):
-        return 'Data '+nrp+' berhasil dihapus :)\n'
+        return 'Data '+Id+' berhasil dihapus :)\n'
     elif(flag == "0"):
         return 'Data gagal dihapus :(\n'
 
