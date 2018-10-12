@@ -117,6 +117,17 @@ def allgames():
     elif(flag == "0"):
         return 'Data gagal dimasukkan :(\n'
 
+def hapusgame(Id):
+    r = requests.post("http://www.aditmasih.tk/api_reyreyrey/delete.php", data={'Id': Id})
+    data = r.json()
+
+    flag = data['flag']
+   
+    if(flag == "1"):
+        return 'Data '+nrp+' berhasil dihapus :)\n'
+    elif(flag == "0"):
+        return 'Data gagal dihapus :(\n'
+
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -131,7 +142,9 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=carigame(data[1])))
     elif(data[0]=='My Games'):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=allgames()))
-
+    elif(data[0]=='Hapus'):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=hapusgame(data[1])))
+    
 
     if text=="Description":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Atlanta-class Light Cruiser-San Diego, Hull number CL-53 '))
