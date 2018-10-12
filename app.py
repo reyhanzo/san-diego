@@ -61,7 +61,7 @@ def inputgame(Judul, Tahun, Genre, OS):
     return flag
     
     if(flag == "1"):
-        return 'Data '+nama+' berhasil dimasukkan dan tersimpan\n'
+        return 'Data '+nama+' berhasil dimasukkan dan tersimpan :)\n'
     elif(flag == "0"):
         return 'Data gagal dimasukkan, coba tanya yg buat kenapa...\n'
 
@@ -128,6 +128,27 @@ def hapusgame(Id):
     elif(flag == "0"):
         return 'Data gagal dihapus :(\n'
 
+def updategame(Idold,Id,Judul,Tahun,Genre,OS):
+    URLgame = "http://www.aditmasih.tk/api_reyreyrey/show.php?Id=" + Idold
+    r = requests.get(URLgame)
+    data = r.json()
+    err = "data tidak ditemukan :("
+    Id_old=Idold
+    flag = data['flag']
+    if(flag == "1"):
+        r = requests.post("http://www.aditmasih.tk/api_reyreyrey/update.php", data={'Id': Id, 'Judul': Judul, 'Tahun': Tahun, 'Genre': Genre, 'OS': OS, 'Id_old':Id_old})
+        data = r.json()
+        flag = data['flag']
+
+        if(flag == "1"):
+            return 'Data '+Id_old+'berhasil diupdate :)\n'
+        elif(flag == "0"):
+            return 'Data gagal diupdate :(\n'
+
+    elif(flag == "0"):
+        return err
+
+
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -144,7 +165,9 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=allgames()))
     elif(data[0]=='Hapus'):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=hapusgame(data[1])))
-    
+    elif(data[0]=='Update'):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=updategame(data[1],data[2],data[3],data[4],data[5],data[6])))
+
 
     if text=="Description":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Atlanta-class Light Cruiser-San Diego, Hull number CL-53 '))
