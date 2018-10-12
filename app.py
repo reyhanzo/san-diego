@@ -65,18 +65,18 @@ def inputgame(Judul, Tahun, Genre, OS):
     elif(flag == "0"):
         return 'Data gagal dimasukkan, coba tanya yg buat kenapa...\n'
 
-def carigame(Judul):
-    URLgame = "http://www.aditmasih.tk/api_reyreyrey/show.php?judul=" + Judul
+def carigame(Id):
+    URLgame = "http://www.aditmasih.tk/api_reyreyrey/show.php?id=" + Id
     r = requests.get(URLgame)
     data = r.json()
     err = "data tidak ditemukan :("
     
     flag = data['flag']
     if(flag == "1"):
-        Judul = data['data_game'][0]['judul']
-        Tahun = data['data_game'][0]['tahun']
-        Genre = data['data_game'][0]['genre']
-        OS = data['data_game'][0]['os']
+        Judul = data['data_game'][0]['Judul']
+        Tahun = data['data_game'][0]['Tahun']
+        Genre = data['data_game'][0]['Genre']
+        OS = data['data_game'][0]['OS']
 
         # munculin semua, ga rapi, ada 'u' nya
         # all_data = data['data_angkatan'][0]
