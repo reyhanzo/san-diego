@@ -66,7 +66,7 @@ def inputgame(Judul, Tahun, Genre, OS):
         return 'Data gagal dimasukkan, coba tanya yg buat kenapa...\n'
 
 def carigame(Id):
-    URLgame = "http://www.aditmasih.tk/api_reyreyrey/show.php?id=" + Id
+    URLgame = "http://www.aditmasih.tk/api_reyreyrey/show.php?Id=" + Id
     r = requests.get(URLgame)
     data = r.json()
     err = "data tidak ditemukan :("
