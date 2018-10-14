@@ -128,7 +128,7 @@ def hapusgame(Id):
     elif(flag == "0"):
         return 'Data gagal dihapus :(\n'
 
-def updategame(Idold,Judul,Tahun,Genre,OS):
+def updategame(Idold,Id,Judul,Tahun,Genre,OS):
     URLgame = "http://www.aditmasih.tk/api_reyreyrey/show.php?Id=" + Idold
     r = requests.get(URLgame)
     data = r.json()
@@ -136,7 +136,7 @@ def updategame(Idold,Judul,Tahun,Genre,OS):
     Id_oldgame=Idold
     flag = data['flag']
     if(flag == "1"):
-        r = requests.post("http://www.aditmasih.tk/api_reyreyrey/update.php", data={'Judul': Judul, 'Tahun': Tahun, 'Genre': Genre, 'OS': OS, 'Id_oldgame':Id_oldgame})
+        r = requests.post("http://www.aditmasih.tk/api_reyreyrey/update.php", data={'Id': Id, 'Judul': Judul, 'Tahun': Tahun, 'Genre': Genre, 'OS': OS, 'Id_oldgame':Id_oldgame})
         data = r.json()
         flag = data['flag']
 
@@ -166,7 +166,7 @@ def handle_message(event):
     elif(data[0]=='Hapus'):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=hapusgame(data[1])))
     elif(data[0]=='Update'):
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=updategame(data[1],data[2],data[3],data[4],data[5])))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=updategame(data[1],data[2],data[3],data[4],data[5],data[6])))
 
 
     if text=="Description":
