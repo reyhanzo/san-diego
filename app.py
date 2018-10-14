@@ -142,7 +142,7 @@ def updategame(Idold,Id,Judul,Tahun,Genre,OS):
 
         if(flag == "1"):
             return 'Data '+Id_old+'berhasil diupdate :)\n'
-        elif(flag == "0"):
+        elif(flag == "3"):
             return 'Data gagal diupdate :(\n'
 
     elif(flag == "0"):
