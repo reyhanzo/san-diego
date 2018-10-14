@@ -133,16 +133,16 @@ def updategame(Idold,Id,Judul,Tahun,Genre,OS):
     r = requests.get(URLgame)
     data = r.json()
     err = "data tidak ditemukan :("
-    Id_old=Idold
+    Id_oldgame=Idold
     flag = data['flag']
     if(flag == "1"):
-        r = requests.post("http://www.aditmasih.tk/api_reyreyrey/update.php", data={'Id': Id, 'Judul': Judul, 'Tahun': Tahun, 'Genre': Genre, 'OS': OS, 'Id_old':Id_old})
+        r = requests.post("http://www.aditmasih.tk/api_reyreyrey/update.php", data={'Id': Id, 'Judul': Judul, 'Tahun': Tahun, 'Genre': Genre, 'OS': OS, 'Id_oldgame':Id_oldgame})
         data = r.json()
         flag = data['flag']
 
         if(flag == "1"):
-            return 'Data '+Id_old+'berhasil diupdate :)\n'
-        elif(flag == "3"):
+            return 'Data '+Id_oldgame+'berhasil diupdate :)\n'
+        elif(flag == "0"):
             return 'Data gagal diupdate :(\n'
 
     elif(flag == "0"):
