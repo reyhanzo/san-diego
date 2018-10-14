@@ -157,13 +157,13 @@ def handle_message(event):
     gid = event.source.sender_id #get group_id
     profile = line_bot_api.get_profile(sender)
     data=text.split('-')
-    if(data[0]=='Tambah'):
+    if(data[0]=='Add'):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=inputgame(data[1],data[2],data[3],data[4])))
-    elif(data[0]=='Lihat'):
+    elif(data[0]=='Show'):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=carigame(data[1])))
     elif(data[0]=='My Games'):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=allgames()))
-    elif(data[0]=='Hapus'):
+    elif(data[0]=='Delete'):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=hapusgame(data[1])))
     elif(data[0]=='Update'):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=updategame(data[1],data[2],data[3],data[4],data[5])))
@@ -183,7 +183,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://eimusics.com/wp-content/uploads/2015/02/2013.03.20-livetune-feat.-Hatsune-Miku-Redial-1280x720-H264-AAC-eimusics.com_.mkv_snapshot_00.02_2015.02.19_11.33.51.jpg',
     preview_image_url='https://eimusics.com/wp-content/uploads/2015/02/2013.03.20-livetune-feat.-Hatsune-Miku-Redial-1280x720-H264-AAC-eimusics.com_.mkv_snapshot_00.02_2015.02.19_11.33.51.jpg'))    
     if text=="Menu":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Description, I love you, San Diego, Rate, Best Pose, Miku, Belfast'))    
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Fitur baru nih....\n1.Add \n2.Show \n3.My Games \n4. Delete \n5.Update \nUntuk petunjuk lain, silahkan tanya sama yg buat bot ini (^_^). \nFitur lain nisa diakses kok, silahkan ditulis saja .... :) \nDescription, I love you, San Diego, Rate, Best Pose, Miku, Belfast'))    
     if text=="Belfast":
         line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://archive.hnsa.org/ships/img/belfast1.jpg',preview_image_url='https://archive.hnsa.org/ships/img/belfast1.jpg'))
 
