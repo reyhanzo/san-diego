@@ -233,6 +233,8 @@ def handle_message(event):
     gid = event.source.sender_id #get group_id
     profile = line_bot_api.get_profile(sender)
     data=text.split('-')
+   
+#Database Game
     if(data[0]=='Add'):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=inputgame(data[1],data[2],data[3],data[4])))
     elif(data[0]=='Show'):
@@ -244,24 +246,27 @@ def handle_message(event):
     elif(data[0]=='Update'):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=updategame(data[1],data[2],data[3],data[4],data[5])))
 
-
+#Pemanis
     if text =="hehe":
-        line_bot_api.reply_message(event,reply_token,TextSendMessage(text='hoho'))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='hoho'))
     if text =="haha":
-        line_bot_api.reply_message(event,reply_token,TextSendMessage(text='hehe'))    
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='hehe'))    
     if text =="hihi":
-        line_bot_api.reply_message(event,reply_token,TextSendMessage(text='haha'))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='haha'))
     if text =="hoho":
-        line_bot_api.reply_message(event,reply_token,TextSendMessage(text='hihi'))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='hihi'))
     if text =="p":
-        line_bot_api.reply_message(event,reply_token,TextSendMessage(text='SPAM TERUS.......'))            
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='SPAM TERUS.......'))            
     if text=="Menu":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Fitur baru nih....\n1. Add \n2. Show \n3. My Games \n4. Delete \n5. Update \nUntuk petunjuk lain, silahkan tanya sama yg buat bot ini (^_^). \nFitur lain bisa diakses kok, silahkan ditulis saja .... :) \nBisa tanya sama yg buat.'))    
     if text=="Belfast":
-        line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://archive.hnsa.org/ships/img/belfast1.jpg',preview_image_url='https://archive.hnsa.org/ships/img/belfast1.jpg'),TextSendMessage(text='Name : HMS Belfast \nBuilder : Harland and Wolff Shipyard \nMotto : Pro Tanto Quid Retribuamus (Latin: For so much, how shall we repay?) \nHonours: Arctic 1943, North Cape 1943, Normandy 1944, Korea !952-53 \nLaunched : 17 March 1938'))
+        {
+        line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://archive.hnsa.org/ships/img/belfast1.jpg',preview_image_url='https://archive.hnsa.org/ships/img/belfast1.jpg'))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Name : HMS Belfast \nBuilder : Harland and Wolff Shipyard \nMotto : Pro Tanto Quid Retribuamus (Latin: For so much, how shall we repay?) \nHonours: Arctic 1943, North Cape 1943, Normandy 1944, Korea !952-53 \nLaunched : 17 March 1938'))
+        }
 
 
-    line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Ngapain Kamu '+profile.display_name+'\nNulis apa kamu \nKetik "Menu" woi....'))
+    line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Ngapain Kamu '+profile.display_name+'\nNulis apa kamu \nKetik "Menu" lah wkwk'))
 
 
 import os
