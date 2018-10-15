@@ -65,8 +65,8 @@ def inputgame(Judul, Tahun, Genre, OS):
     elif(flag == "0"):
         return 'Data gagal dimasukkan, coba tanya yg buat kenapa...\n'
 
-def carigame(Id):
-    URLgame = "http://www.aditmasih.tk/api_reyreyrey/show.php?Id=" + Id
+def carigame(Tahun):
+    URLgame = "http://www.aditmasih.tk/api_reyreyrey/show.php?Tahun=" + Tahun
     r = requests.get(URLgame)
     data = r.json()
     err = "data tidak ditemukan :("
@@ -87,6 +87,71 @@ def carigame(Id):
     elif(flag == "0"):
         return err
 
+def carigame(Id):
+    URLgame = "http://www.aditmasih.tk/api_reyreyrey/show.php?Id=" + Id
+    r = requests.get(URLgame)
+    data = r.json()
+    err = "data tidak ditemukan :("
+    
+    flag = data['flag']
+    if(flag == "1"):
+        Judul = data['data_game'][0]['Judul']
+        Tahun = data['data_game'][0]['Tahun']
+        Genre = data['data_game'][0]['Genre']
+        OS = data['data_game'][0]['OS']
+
+        # munculin semua, ga rapi, ada 'u' nya
+        # all_data = data['data_angkatan'][0]
+        data= "Judul : "+Judul+"\nTahun : "+Tahun+"\nGenre : "+Genre+"\nOS : "+OS
+        return data
+        # return all_data
+
+    elif(flag == "0"):
+        return err        
+
+def carigame(Genre):
+    URLgame = "http://www.aditmasih.tk/api_reyreyrey/show.php?Genre=" + Genre
+    r = requests.get(URLgame)
+    data = r.json()
+    err = "data tidak ditemukan :("
+    
+    flag = data['flag']
+    if(flag == "1"):
+        Judul = data['data_game'][0]['Judul']
+        Tahun = data['data_game'][0]['Tahun']
+        Genre = data['data_game'][0]['Genre']
+        OS = data['data_game'][0]['OS']
+
+        # munculin semua, ga rapi, ada 'u' nya
+        # all_data = data['data_angkatan'][0]
+        data= "Judul : "+Judul+"\nTahun : "+Tahun+"\nGenre : "+Genre+"\nOS : "+OS
+        return data
+        # return all_data
+
+    elif(flag == "0"):
+        return err
+
+def carigame(OS):
+    URLgame = "http://www.aditmasih.tk/api_reyreyrey/show.php?OS=" + OS
+    r = requests.get(URLgame)
+    data = r.json()
+    err = "data tidak ditemukan :("
+    
+    flag = data['flag']
+    if(flag == "1"):
+        Judul = data['data_game'][0]['Judul']
+        Tahun = data['data_game'][0]['Tahun']
+        Genre = data['data_game'][0]['Genre']
+        OS = data['data_game'][0]['OS']
+
+        # munculin semua, ga rapi, ada 'u' nya
+        # all_data = data['data_angkatan'][0]
+        data= "Judul : "+Judul+"\nTahun : "+Tahun+"\nGenre : "+Genre+"\nOS : "+OS
+        return data
+        # return all_data
+
+    elif(flag == "0"):
+        return err        
 def allgames():
     r = requests.post("http://www.aditmasih.tk/api_reyreyrey/all.php")
     data = r.json()
@@ -127,6 +192,17 @@ def hapusgame(Id):
         return 'Data '+Id+' berhasil dihapus :)\n'
     elif(flag == "0"):
         return 'Data gagal dihapus :(\n'
+
+def hapusgame(Judul):
+    r = requests.post("http://www.aditmasih.tk/api_reyreyrey/delete.php", data={'Judul': Judul})
+    data = r.json()
+
+    flag = data['flag']
+   
+    if(flag == "1"):
+        return 'Data '+Judul+' berhasil dihapus :)\n'
+    elif(flag == "0"):
+        return 'Data gagal dihapus :(\n'        
 
 def updategame(Idold,Judul,Tahun,Genre,OS):
     URLgame = "http://www.aditmasih.tk/api_reyreyrey/show.php?Id=" + Idold
@@ -169,23 +245,21 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=updategame(data[1],data[2],data[3],data[4],data[5])))
 
 
-    if text=="Description":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Atlanta-class Light Cruiser-San Diego, Hull number CL-53 '))
-    if text=="I love you":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='I love you too, because We are Number One.'))
-    if text=="San Diego":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='WATASHI WA NAMBA WAN !!!'))    
-    if text=="Rate":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Super Rare, and The best Light Cruiser in the World !!!'))
-    if text=="Best Pose":
-        line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://azurlane.koumakan.jp/w/images/d/d8/San_Diego.png',preview_image_url='https://azurlane.koumakan.jp/w/images/d/d8/San_Diego.png'))
-    if text=="Miku":
-        line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://eimusics.com/wp-content/uploads/2015/02/2013.03.20-livetune-feat.-Hatsune-Miku-Redial-1280x720-H264-AAC-eimusics.com_.mkv_snapshot_00.02_2015.02.19_11.33.51.jpg',
-    preview_image_url='https://eimusics.com/wp-content/uploads/2015/02/2013.03.20-livetune-feat.-Hatsune-Miku-Redial-1280x720-H264-AAC-eimusics.com_.mkv_snapshot_00.02_2015.02.19_11.33.51.jpg'))    
+    if text =="hehe":
+        line_bot_api.reply_message(event,reply_token,TextSendMessage(text='hoho'))
+    if text =="haha":
+        line_bot_api.reply_message(event,reply_token,TextSendMessage(text='hehe'))    
+    if text =="hihi":
+        line_bot_api.reply_message(event,reply_token,TextSendMessage(text='haha'))
+    if text =="hoho":
+        line_bot_api.reply_message(event,reply_token,TextSendMessage(text='hihi'))
+    if text =="p":
+        line_bot_api.reply_message(event,reply_token,TextSendMessage(text='SPAM TERUS.......'))            
     if text=="Menu":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Fitur baru nih....\n1.Add \n2.Show \n3.My Games \n4. Delete \n5.Update \nUntuk petunjuk lain, silahkan tanya sama yg buat bot ini (^_^). \nFitur lain nisa diakses kok, silahkan ditulis saja .... :) \nDescription, I love you, San Diego, Rate, Best Pose, Miku, Belfast'))    
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Fitur baru nih....\n1. Add \n2. Show \n3. My Games \n4. Delete \n5. Update \nUntuk petunjuk lain, silahkan tanya sama yg buat bot ini (^_^). \nFitur lain bisa diakses kok, silahkan ditulis saja .... :) \nBisa tanya sama yg buat.'))    
     if text=="Belfast":
-        line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://archive.hnsa.org/ships/img/belfast1.jpg',preview_image_url='https://archive.hnsa.org/ships/img/belfast1.jpg'))
+        line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://archive.hnsa.org/ships/img/belfast1.jpg',preview_image_url='https://archive.hnsa.org/ships/img/belfast1.jpg'),
+            TextSendMessage(text='Name : HMS Belfast \nBuilder : Harland and Wolff Shipyard \nMotto : Pro Tanto Quid Retribuamus (Latin: For so much, how shall we repay?) \nHonours: Arctic 1943, North Cape 1943, Normandy 1944, Korea !952-53 \nLaunched : 17 March 1938'))
 
 
     line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Ngapain Kamu '+profile.display_name+'\nNulis apa kamu \nKetik "Menu" woi....'))
