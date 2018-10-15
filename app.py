@@ -258,8 +258,7 @@ def handle_message(event):
     if text=="Menu":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Fitur baru nih....\n1. Add \n2. Show \n3. My Games \n4. Delete \n5. Update \nUntuk petunjuk lain, silahkan tanya sama yg buat bot ini (^_^). \nFitur lain bisa diakses kok, silahkan ditulis saja .... :) \nBisa tanya sama yg buat.'))    
     if text=="Belfast":
-        line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://archive.hnsa.org/ships/img/belfast1.jpg',preview_image_url='https://archive.hnsa.org/ships/img/belfast1.jpg'),
-            TextSendMessage(text='Name : HMS Belfast \nBuilder : Harland and Wolff Shipyard \nMotto : Pro Tanto Quid Retribuamus (Latin: For so much, how shall we repay?) \nHonours: Arctic 1943, North Cape 1943, Normandy 1944, Korea !952-53 \nLaunched : 17 March 1938'))
+        line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://archive.hnsa.org/ships/img/belfast1.jpg',preview_image_url='https://archive.hnsa.org/ships/img/belfast1.jpg'),TextSendMessage(text='Name : HMS Belfast \nBuilder : Harland and Wolff Shipyard \nMotto : Pro Tanto Quid Retribuamus (Latin: For so much, how shall we repay?) \nHonours: Arctic 1943, North Cape 1943, Normandy 1944, Korea !952-53 \nLaunched : 17 March 1938'))
 
 
     line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Ngapain Kamu '+profile.display_name+'\nNulis apa kamu \nKetik "Menu" woi....'))
