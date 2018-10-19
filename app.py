@@ -151,7 +151,8 @@ def carigame(OS):
         # return all_data
 
     elif(flag == "0"):
-        return err        
+        return err     
+
 def allgames():
     r = requests.post("http://www.aditmasih.tk/api_reyreyrey/all.php")
     data = r.json()
@@ -247,26 +248,49 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=updategame(data[1],data[2],data[3],data[4],data[5])))
 
 #Pemanis
-    if text =="hehe":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='hoho'))
-    if text =="haha":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='hehe'))    
-    if text =="hihi":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='haha'))
-    if text =="hoho":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='hihi'))
-    if text =="p":
+    if text =="hai":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Hai '+profile.display_name+',Apa Kabar ?'),StickerSendMessage(package_id='1',sticker_id='106'))
+    if text =="baik":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Ok '+profile.display_name+',Semoga sehat selalu.... :)'),StickerSendMessage(package_id='1',sticker_id='13'))
+    elif text =="hehe":
+        line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='100'))
+    elif text =="haha":
+        line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='10'))    
+    elif text =="hihi":
+        line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='2',sticker_id='163'))
+    elif text =="hoho":
+        line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='405'))
+    elif text =="huhu":
+        line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='16'))  
+    elif text =="p":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='SPAM TERUS.......'))            
-    if text=="Menu":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Fitur baru nih....\n1. Add \n2. Show \n3. My Games \n4. Delete \n5. Update \nUntuk petunjuk lain, silahkan tanya sama yg buat bot ini (^_^). \nFitur lain bisa diakses kok, silahkan ditulis saja .... :) \nBisa tanya sama yg buat.'))    
-    if text=="Belfast":
-        {
-        line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://archive.hnsa.org/ships/img/belfast1.jpg',preview_image_url='https://archive.hnsa.org/ships/img/belfast1.jpg'))
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Name : HMS Belfast \nBuilder : Harland and Wolff Shipyard \nMotto : Pro Tanto Quid Retribuamus (Latin: For so much, how shall we repay?) \nHonours: Arctic 1943, North Cape 1943, Normandy 1944, Korea !952-53 \nLaunched : 17 March 1938'))
-        }
+    elif text=="Menu":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Feature...\n1. Add \n2. Show \n3. My Games \n4. Delete \n5. Update \nUntuk petunjuk lain, silahkan tanya sama yg buat bot ini (^_^). \nFitur lain bisa diakses kok, silahkan ditulis saja .... :) \nBisa tanya sama yg buat.'))    
+    elif text=="Belfast":
+        line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://archive.hnsa.org/ships/img/belfast1.jpg',preview_image_url='https://archive.hnsa.org/ships/img/belfast1.jpg'),TextSendMessage(text='Name : HMS Belfast \nBuilder : Harland and Wolff Shipyard \nMotto : Pro Tanto Quid Retribuamus (Latin: For so much, how shall we repay?) \nHonours: Arctic 1943, North Cape 1943, Normandy 1944, Korea !952-53 \nLaunched : 17 March 1938'))
+
+#SPAM....
+     elif (data[0]=='/spam'):
+        i = 0
+        if(int(data[2])>25):
+            if isinstance(event.source, SourceGroup):
+                line_bot_api.push_message(event.source.group_id,TextSendMessage(text="Don't make me sick, dude. Too much conversation....."))
+            elif isinstance(event.source, SourceRoom):
+                line_bot_api.push_message(event.source.room_id,TextSendMessage(text="Don't make me sick, dude. Too much conversation....."))
+        else:
+            while i < int(data[2]):
+                if isinstance(event.source, SourceGroup):
+                    line_bot_api.push_message(event.source.group_id,TextSendMessage(text=data[1]))
+                elif isinstance(event.source, SourceRoom):
+                    line_bot_api.push_message(event.source.room_id,TextSendMessage(text=data[1]))
+                #else:
+                #   line_bot_api.push_message(event.source.user_id,TextSendMessage(text=data[1]))
+                i =i+1
 
 
-    line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Ngapain Kamu '+profile.display_name+'\nNulis apa kamu \nKetik "Menu" lah wkwk'))
+
+
+    line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Hai '+profile.display_name+' \nJClick "Menu" for more information.... \n\nHave Fun.......'))
 
 
 import os
