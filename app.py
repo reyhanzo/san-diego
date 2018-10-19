@@ -264,6 +264,26 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='16'))  
     elif text =="p":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='SPAM TERUS.......'))            
+    elif text=="Ketawa yuk":
+        line_bot_api.reply_message(event.reply_token,ImagemapSendMessage(
+    base_url='https://example.com/base',
+    alt_text='this is an imagemap',
+    base_size=BaseSize(height=1040, width=1040),
+    actions=[
+        URIImagemapAction(
+            link_uri='https://example.com/',
+            area=ImagemapArea(
+                x=0, y=0, width=520, height=1040
+            )
+        ),
+        MessageImagemapAction(
+            text='hello',
+            area=ImagemapArea(
+                x=520, y=0, width=520, height=1040
+            )
+        )
+    ])
+)
     elif text=="Menu":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Feature...\n1. Add \n2. Show \n3. My Games \n4. Delete \n5. Update \nUntuk petunjuk lain, silahkan tanya sama yg buat bot ini (^_^). \nFitur lain bisa diakses kok, silahkan ditulis saja .... :) \nBisa tanya sama yg buat.'))    
     elif text=="Belfast":
