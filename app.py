@@ -287,7 +287,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='100'))
     elif text =="haha":
         line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='10'))    
-    elif text =="hihi":r
+    elif text =="hihi":
         line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='2',sticker_id='163'))
     elif text =="hoho":
         line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='405'))
@@ -297,7 +297,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Iya ?'))            
     elif text=="Ketawa yuk":
         line_bot_api.reply_message(event.reply_token,ImagemapSendMessage(
-    base_url='https://image.freepik.com/free-icon/square-divided-in-four-squares-or-parts-ios-7-interface-symbol_318-33709.jpg',
+    base_url='http://cdn.onlinewebfonts.com/svg/img_526173.png',
     alt_text='this is an four dots',
     base_size=BaseSize(height=1040, width=1040),
     actions=[
