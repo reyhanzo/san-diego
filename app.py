@@ -248,9 +248,9 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=updategame(data[1],data[2],data[3],data[4],data[5])))
 
 #Pemanis
-    if text =="hai":
+    elif text =="hai":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Hai '+profile.display_name+',Apa Kabar ?'),StickerSendMessage(package_id='1',sticker_id='106'))
-    if text =="baik":
+    elif text =="baik":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Ok '+profile.display_name+',Semoga sehat selalu.... :)'),StickerSendMessage(package_id='1',sticker_id='13'))
     elif text =="hehe":
         line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='100'))
@@ -262,8 +262,8 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='405'))
     elif text =="huhu":
         line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='16'))  
-    elif text =="p text,re.IGNORECASE":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='SPAM TERUS.......'))            
+    elif text =="p":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Iya ?'))            
     elif text=="Ketawa yuk":
         line_bot_api.reply_message(event.reply_token,ImagemapSendMessage(
     base_url='https://example.com/base',
@@ -294,7 +294,7 @@ def handle_message(event):
 
 
 
-    line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Hai '+profile.display_name+' \nJClick "Menu" for more information.... \n\nHave Fun.......'))
+    line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Hai '+profile.display_name+' \nClick "Menu" for more information.... \n\nHave Fun.......'))
 
 
 import os
