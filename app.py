@@ -297,7 +297,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Iya ?'))            
     elif text=="Ketawa yuk":
         line_bot_api.reply_message(event.reply_token,ImagemapSendMessage(
-    base_url='http://cdn.onlinewebfonts.com/svg/img_526173.png',
+    base_url='https://images-na.ssl-images-amazon.com/images/I/71jut9tnGeL._UY500_.jpg',
     alt_text='this is an four dots',
     base_size=BaseSize(height=1040, width=1040),
     actions=[
