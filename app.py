@@ -65,7 +65,26 @@ def inputgame(Judul, Tahun, Genre, OS):
     elif(flag == "0"):
         return 'Data gagal dimasukkan, coba tanya yg buat kenapa...\n'
 
-def carigame(Tahun):
+def carigametitle(Judul):
+    URLgame = "http://www.aditmasih.tk/api_reyreyrey/show.php?Judul=" + Judul
+    r = requests.get(URLgame)
+    data = r.json()
+    err = "data tidak ditemukan :("
+    
+    flag = data['flag']
+    if(flag == "1"):
+        Judul = data['data_game'][0]['Judul']
+        Tahun = data['data_game'][0]['Tahun']
+        Genre = data['data_game'][0]['Genre']
+        OS = data['data_game'][0]['OS']
+
+        # munculin semua, ga rapi, ada 'u' nya
+        # all_data = data['data_angkatan'][0]
+        data= "Judul : "+Judul+"\nTahun : "+Tahun+"\nGenre : "+Genre+"\nOS : "+OS
+        return data
+        # return all_data
+
+def carigameyear(Tahun):
     URLgame = "http://www.aditmasih.tk/api_reyreyrey/show.php?Tahun=" + Tahun
     r = requests.get(URLgame)
     data = r.json()
@@ -87,7 +106,7 @@ def carigame(Tahun):
     elif(flag == "0"):
         return err
 
-def carigame(Id):
+def carigameid(Id):
     URLgame = "http://www.aditmasih.tk/api_reyreyrey/show.php?Id=" + Id
     r = requests.get(URLgame)
     data = r.json()
@@ -109,7 +128,7 @@ def carigame(Id):
     elif(flag == "0"):
         return err        
 
-def carigame(Genre):
+def carigamegenre(Genre):
     URLgame = "http://www.aditmasih.tk/api_reyreyrey/show.php?Genre=" + Genre
     r = requests.get(URLgame)
     data = r.json()
@@ -131,7 +150,7 @@ def carigame(Genre):
     elif(flag == "0"):
         return err
 
-def carigame(OS):
+def carigameos(OS):
     URLgame = "http://www.aditmasih.tk/api_reyreyrey/show.php?OS=" + OS
     r = requests.get(URLgame)
     data = r.json()
@@ -183,7 +202,7 @@ def allgames():
     elif(flag == "0"):
         return 'Data gagal dimasukkan :(\n'
 
-def hapusgame(Id):
+def hapusgameid(Id):
     r = requests.post("http://www.aditmasih.tk/api_reyreyrey/delete.php", data={'Id': Id})
     data = r.json()
 
@@ -194,7 +213,7 @@ def hapusgame(Id):
     elif(flag == "0"):
         return 'Data gagal dihapus :(\n'
 
-def hapusgame(Judul):
+def hapusgametitle(Judul):
     r = requests.post("http://www.aditmasih.tk/api_reyreyrey/delete.php", data={'Judul': Judul})
     data = r.json()
 
@@ -238,20 +257,30 @@ def handle_message(event):
 #Database Game
     if(data[0]=='Add'):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=inputgame(data[1],data[2],data[3],data[4])))
-    elif(data[0]=='Show'):
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=carigame(data[1])))
+    elif(data[0]=='Show_id'):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=carigameid(data[1])))
+    elif(data[0]=='Show_judul'):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=carigametitle(data[1])))
+    elif(data[0]=='Show_tahun'):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=carigameyear(data[1])))
+    elif(data[0]=='Show_genre'):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=carigamegenre(data[1])))
+    elif(data[0]=='Show_os'):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=carigameos(data[1])))    
     elif(data[0]=='My Games'):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=allgames()))
-    elif(data[0]=='Delete'):
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=hapusgame(data[1])))
+    elif(data[0]=='Delete_id'):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=hapusgameid(data[1])))
+    elif(data[0]=='Delete_judul'):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=hapusgametitle(data[1])))    
     elif(data[0]=='Update'):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=updategame(data[1],data[2],data[3],data[4],data[5])))
 
 #Pemanis
     elif text =="hai":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Hai '+profile.display_name+',Apa Kabar ?'),StickerSendMessage(package_id='1',sticker_id='106'))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Hai '+profile.display_name+',Apa Kabar ?')),line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='106'))
     elif text =="baik":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Ok '+profile.display_name+',Semoga sehat selalu.... :)'),StickerSendMessage(package_id='1',sticker_id='13'))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Ok '+profile.display_name+',Semoga sehat selalu.... :)')),line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='13'))
     elif text =="hehe":
         line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='100'))
     elif text =="haha":
