@@ -278,9 +278,11 @@ def handle_message(event):
 
 #Pemanis
     elif text =="hai":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Hai '+profile.display_name+',Apa Kabar ?')),line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='106'))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Hai '+profile.display_name+' , Apa Kabar ?'))
+        line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='106'))
     elif text =="baik":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Ok '+profile.display_name+',Semoga sehat selalu.... :)')),line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='13'))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Ok '+profile.display_name+' , Semoga sehat selalu.... :)'))
+        line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='13'))
     elif text =="hehe":
         line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='100'))
     elif text =="haha":
@@ -295,20 +297,32 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Iya ?'))            
     elif text=="Ketawa yuk":
         line_bot_api.reply_message(event.reply_token,ImagemapSendMessage(
-    base_url='https://example.com/base',
-    alt_text='this is an imagemap',
+    base_url='http://cdn.onlinewebfonts.com/svg/img_526173.png',
+    alt_text='this is an four dots',
     base_size=BaseSize(height=1040, width=1040),
     actions=[
-        URIImagemapAction(
-            link_uri='https://example.com/',
+        MessageImagemapAction(
+            text='haha',
             area=ImagemapArea(
-                x=0, y=0, width=520, height=1040
+                x=0, y=0, width=520, height=520
             )
         ),
         MessageImagemapAction(
-            text='hello',
+            text='hihi',
             area=ImagemapArea(
-                x=520, y=0, width=520, height=1040
+                x=520, y=0, width=520, height=520
+            )
+        ),
+        MessageImagemapAction(
+            text='huhu',
+            area=ImagemapArea(
+                x=520, y=0, width=520, height=520
+            )
+        ),
+        MessageImagemapAction(
+            text='hoho',
+            area=ImagemapArea(
+                x=520, y=0, width=520, height=520
             )
         )
     ])
@@ -317,11 +331,6 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Feature...\n1. Add \n2. Show \n3. My Games \n4. Delete \n5. Update \nUntuk petunjuk lain, silahkan tanya sama yg buat bot ini (^_^). \nFitur lain bisa diakses kok, silahkan ditulis saja .... :) \nBisa tanya sama yg buat.'))    
     elif text=="Belfast":
         line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://archive.hnsa.org/ships/img/belfast1.jpg',preview_image_url='https://archive.hnsa.org/ships/img/belfast1.jpg'),TextSendMessage(text='Name : HMS Belfast \nBuilder : Harland and Wolff Shipyard \nMotto : Pro Tanto Quid Retribuamus (Latin: For so much, how shall we repay?) \nHonours: Arctic 1943, North Cape 1943, Normandy 1944, Korea !952-53 \nLaunched : 17 March 1938'))
-
-
-
-
-
 
     line_bot_api.reply_message(event.reply_token,TextSendMessage(text='Hai '+profile.display_name+' \nClick "Menu" for more information.... \n\nHave Fun.......'))
 
