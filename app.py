@@ -287,7 +287,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='100'))
     elif text =="haha":
         line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='10'))    
-    elif text =="hihi":
+    elif text =="hihi":r
         line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='2',sticker_id='163'))
     elif text =="hoho":
         line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='405'))
