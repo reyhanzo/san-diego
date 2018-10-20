@@ -262,7 +262,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='405'))
     elif text =="huhu":
         line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id='1',sticker_id='16'))  
-    elif text =="p":
+    elif text =="p text,re.IGNORECASE":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='SPAM TERUS.......'))            
     elif text=="Ketawa yuk":
         line_bot_api.reply_message(event.reply_token,ImagemapSendMessage(
@@ -289,23 +289,7 @@ def handle_message(event):
     elif text=="Belfast":
         line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://archive.hnsa.org/ships/img/belfast1.jpg',preview_image_url='https://archive.hnsa.org/ships/img/belfast1.jpg'),TextSendMessage(text='Name : HMS Belfast \nBuilder : Harland and Wolff Shipyard \nMotto : Pro Tanto Quid Retribuamus (Latin: For so much, how shall we repay?) \nHonours: Arctic 1943, North Cape 1943, Normandy 1944, Korea !952-53 \nLaunched : 17 March 1938'))
 
-#SPAM....
-     elif (data[0]=='/spam'):
-        i = 0
-        if(int(data[2])>25):
-            if isinstance(event.source, SourceGroup):
-                line_bot_api.push_message(event.source.group_id,TextSendMessage(text="Don't make me sick, dude. Too much conversation....."))
-            elif isinstance(event.source, SourceRoom):
-                line_bot_api.push_message(event.source.room_id,TextSendMessage(text="Don't make me sick, dude. Too much conversation....."))
-        else:
-            while i < int(data[2]):
-                if isinstance(event.source, SourceGroup):
-                    line_bot_api.push_message(event.source.group_id,TextSendMessage(text=data[1]))
-                elif isinstance(event.source, SourceRoom):
-                    line_bot_api.push_message(event.source.room_id,TextSendMessage(text=data[1]))
-                #else:
-                #   line_bot_api.push_message(event.source.user_id,TextSendMessage(text=data[1]))
-                i =i+1
+
 
 
 
